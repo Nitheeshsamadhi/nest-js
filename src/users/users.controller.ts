@@ -1,14 +1,21 @@
-import { Controller, Get, Post } from "@nestjs/common";
+import { Controller,Get, Param, Post } from '@nestjs/common';
+import { userService } from './users.service';
 
 @Controller('users')
-export class UserController{
+export class UsersController {
     @Get()
-    getUsers(){
-        return 'you made a get method to get users';
+    getuser(){
+        const user = new userService
+        return user.getusers();
     }
+    @Get(':id')
+    getUserById(@Param('id') id:any){
+        const user = new userService
+        return user.getUserById(+id)
 
+    }
     @Post()
-    createUsers(){
-        return 'you made post url to post data'
+    postuser(){
+        return ' user created successfully'
     }
 }
