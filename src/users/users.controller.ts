@@ -1,6 +1,8 @@
-import { Body, Controller,DefaultValuePipe,Get, Param, ParseIntPipe, Post, Query, ValidationPipe } from '@nestjs/common';
+import { Body, Controller,DefaultValuePipe,Get, Param, ParseIntPipe, Patch, Post, Query, ValidationPipe } from '@nestjs/common';
 import { userService } from './users.service';
 import { CreateUser } from './dto/create-user.dto';
+import { UpdateUser } from './dto/update-user.dto';
+
 
 @Controller('users')
 export class UsersController {
@@ -29,9 +31,18 @@ export class UsersController {
     }
 
     @Post()
-    postuser(@Body() user:CreateUser){
-        console.log(user)
-        console.log(user instanceof CreateUser)
+    postuser(@Body() user:CreateUser,
+           
+){
+       
         return user;
     }
+    @Patch()
+    updateuser(@Body() user:UpdateUser){
+        console.log(user)
+        return "user updated successfully"
+    }
+
+
+    
 }
