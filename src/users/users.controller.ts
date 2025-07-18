@@ -29,7 +29,9 @@ export class UsersController {
     }
 
     @Post()
-    postuser(@Body(new ValidationPipe()) body:CreateUser){
-        return ' user created successfully'
+    postuser(@Body() user:CreateUser){
+        console.log(user)
+        console.log(user instanceof CreateUser)
+        return user;
     }
 }

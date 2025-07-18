@@ -17,4 +17,7 @@ export class CreateUser {
     @IsBoolean()
     isMarried:boolean;
 
+    @IsNumber()
+    age:number;
+
 }
