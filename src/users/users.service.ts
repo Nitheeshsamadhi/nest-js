@@ -1,11 +1,12 @@
 export class userService {
-  Users: { id: number;email:string ,name: string; age: number; isMarried: boolean }[] = [
+  Users: { id: number;email:string ;gender:string; name: string; age: number; isMarried: boolean }[] = [
     {
       id: 1,
       name: 'nitheesh',
       email:"male",
       age: 21,
       isMarried: false,
+      gender:'male'
     },
     {
       id: 2,
@@ -13,13 +14,15 @@ export class userService {
       email:"male",
       age: 21,
       isMarried: true,
+      gender:'male'
     },
     {
         id:3,
         name:"sri",
         email:"female",
         age:21,
-        isMarried:false
+        isMarried:false,
+        gender:'female'
     }
   ];
 
