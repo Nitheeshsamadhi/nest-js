@@ -1,5 +1,5 @@
 import { Body, Controller,DefaultValuePipe,Get, Param, ParseIntPipe, Patch, Post, Query, ValidationPipe } from '@nestjs/common';
-import { userService } from './users.service';
+import { UserService } from './users.service';
 import { CreateUser } from './dto/create-user.dto';
 import { UpdateUser } from './dto/update-user.dto';
 
@@ -7,16 +7,17 @@ import { UpdateUser } from './dto/update-user.dto';
 @Controller('users')
 export class UsersController {
 
-    @Get()
-    getuser(@Query() query:any){
-        const user = new userService()
+    constructor(private user:UserService){}
+    // @Get()
+    // getuser(@Query() query:any){
         
-        if(query.gender){
+        
+    //     if(query.gender){
             
-            return user.getusers().filter(u => u.gender === query.gender)
-        }
-        return user.getusers();
-    }
+    //         return this.user.getusers().filter(u => u.gender === query.gender)
+    //     }
+    //     return this.user.getusers();
+    // }
 
     @Get()
     getUserById(@Query('limit',  new DefaultValuePipe(10),ParseIntPipe) limit:number ,
@@ -24,9 +25,9 @@ export class UsersController {
                 
     {
         console.log(limit , page)
-        const user = new userService()
         
-        return user.getUserById
+        
+        return this.user.getUserById();
 
     }
 
