@@ -1,8 +1,9 @@
-import { Controller,Get, Param, ParseIntPipe, Post, Query } from '@nestjs/common';
+import { Controller,DefaultValuePipe,Get, Param, ParseIntPipe, Post, Query } from '@nestjs/common';
 import { userService } from './users.service';
 
 @Controller('users')
 export class UsersController {
+
     @Get()
     getuser(@Query() query:any){
         const user = new userService()
@@ -14,11 +15,15 @@ export class UsersController {
         return user.getusers();
     }
 
-    @Get(':id')
-    getUserById(@Param ('id', ParseIntPipe) id:number){
+    @Get()
+    getUserById(@Query('limit',  new DefaultValuePipe(10),ParseIntPipe) limit:number ,
+               @Query ('page',new DefaultValuePipe(1), ParseIntPipe) page:number )
+                
+    {
+        console.log(limit , page)
         const user = new userService()
-        console.log(id)
-        return user.getUserById(id)
+        
+        return user.getUserById
 
     }
 
