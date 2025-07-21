@@ -19,15 +19,14 @@ export class UsersController {
     //     return this.user.getusers();
     // }
 
-    @Get()
-    getUserById(@Query('limit',  new DefaultValuePipe(10),ParseIntPipe) limit:number ,
-               @Query ('page',new DefaultValuePipe(1), ParseIntPipe) page:number )
+    @Get(':Id')
+    getUserById(@Param('id', ParseIntPipe) Id:number)
                 
     {
-        console.log(limit , page)
+       
         
         
-        return this.user.getUserById();
+        return this.user.getUserById(Id);
 
     }
 
