@@ -8,16 +8,13 @@ import { UpdateUser } from './dto/update-user.dto';
 export class UsersController {
 
     constructor(private user:UserService){}
-    // @Get()
-    // getuser(@Query() query:any){
+    @Get()
+    getuser(@Query() query:any){
         
         
-    //     if(query.gender){
-            
-    //         return this.user.getusers().filter(u => u.gender === query.gender)
-    //     }
-    //     return this.user.getusers();
-    // }
+        
+        return this.user.getUsers();
+    }
 
     @Get(':Id')
     getUserById(@Param('id', ParseIntPipe) Id:number)
